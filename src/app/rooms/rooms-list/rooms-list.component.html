@@ -1,0 +1,34 @@
+<p>rooms-list works!</p>
+
+Rooms List
+  <!-- {{roomList}} -->
+  <table>
+    <tr>
+      <th>Index</th>
+      <th>Even / Odd</th>
+      <th>Room Number</th>
+      <th>Room Type</th>
+      <th>Room Price</th>
+      <th>Room Amenities</th>
+      <th>Check-In Time</th>
+      <th>Rating</th>
+    </tr>
+    <tr
+      [ngClass]="e ? 'even' : 'odd'"
+      *ngFor="
+        let room of roomList | slice : 0 : 3;
+        let e = even;
+        let o = odd;
+        let i = index
+      "
+    >
+      <th>{{ i | percent }}</th>
+      <th>{{ e ? "Even" : "Odd" }}</th>
+      <th>{{ room.roomNumber }}</th>
+      <th>{{ room.roomType }}</th>
+      <th>{{ room.price | currency : "INR" }}</th>
+      <th>{{ room.amenities | titlecase }}</th>
+      <th>{{ room.checkinTime | date }}</th>
+      <th>{{ room.rating | number : "1.1-2" }}</th>
+    </tr>
+  </table>
