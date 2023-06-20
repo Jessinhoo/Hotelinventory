@@ -1,6 +1,4 @@
-<p>rooms-list works!</p>
-
-Rooms List
+<h2>{{ title }}</h2>
   <!-- {{roomList}} -->
   <table>
     <tr>
@@ -12,23 +10,26 @@ Rooms List
       <th>Room Amenities</th>
       <th>Check-In Time</th>
       <th>Rating</th>
+      <th>Select Room</th>
     </tr>
     <tr
       [ngClass]="e ? 'even' : 'odd'"
-      *ngFor="
-        let room of roomList | slice : 0 : 3;
+      *ngFor=" let room of rooms
         let e = even;
         let o = odd;
         let i = index
       "
     >
-      <th>{{ i | percent }}</th>
-      <th>{{ e ? "Even" : "Odd" }}</th>
-      <th>{{ room.roomNumber }}</th>
-      <th>{{ room.roomType }}</th>
-      <th>{{ room.price | currency : "INR" }}</th>
-      <th>{{ room.amenities | titlecase }}</th>
-      <th>{{ room.checkinTime | date }}</th>
-      <th>{{ room.rating | number : "1.1-2" }}</th>
+      <td>{{ i | percent }}</td>
+      <td>{{ e ? "Even" : "Odd" }}</td>
+      <td>{{ room.roomNumber }}</td>
+      <td>{{ room.roomType }}</td>
+      <td>{{ room.price | currency : "INR" }}</td>
+      <td>{{ room.amenities | titlecase }}</td>
+      <td>{{ room.checkinTime | date }}</td>
+      <td>{{ room.rating | number : "1.1-2" }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="selectRoom(room)">Select</button>
+      </td>
     </tr>
   </table>
